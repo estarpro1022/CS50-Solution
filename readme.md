@@ -1,6 +1,6 @@
 CS50 is one of the most popular computer science courses around the world. It is well-designed for new beginners to CS. In this course, you will learn fundamental knowledge about **Scratch**, **C**, **Flask** etc. It lays a solid foundation for your future journey to CS field.
 
-CS50是全世界最火的CS课程。对于刚开始接触CS的新手来说，CS50是门不错的选择。在这门课程中，你将会学习**Scratch**, **C**, **Flask**等等内容，这将对你未来进行CS的学习打下良好的基础。
+CS50是全世界最火的CS课程之一。对于刚开始接触CS的新手来说，CS50是门不错的选择。在这门课程中，你将会学习**Scratch**, **C**, **Flask**等等内容，这将对你未来进行CS的学习打下良好的基础。
 
 
 
