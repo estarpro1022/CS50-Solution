@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int add_digit(int digit[], int count);
+
 int main(void)
 {
 
@@ -15,12 +16,14 @@ int main(void)
         count++;
     } while (n1 > 0);
 
+    // Acquire digit in reverse order
     int digit[count];
     for (int i = 0; i < count; i++)
     {
         digit[i] = n2 % 10;
         n2 /= 10;
     }
+
     int sum = 1;
     if (count == 15)
     {
@@ -51,9 +54,11 @@ int main(void)
             }
         }
 
-        if (digit[15] == 4) {
+        if (digit[15] == 4)
+        {
             sum = add_digit(digit, count);
-            if (sum % 10 == 0) {
+            if (sum % 10 == 0)
+            {
                 printf("VISA\n");
                 return 0;
             }
@@ -86,13 +91,15 @@ int add_digit(int digit[], int count)
     for (int i = 1; i < count; i += 2)
     {
         int tmp = digit[i] * 2;
-        if (tmp >= 10) {
+        if (tmp >= 10)
+        {
             sum += tmp % 10;
             sum += tmp / 10;
-        } else {
+        }
+        else
+        {
             sum += tmp;
         }
-
     }
     return sum;
 }
