@@ -5,4 +5,4 @@
 
 ### lab
 
-* [Scrabble][https://cs50.harvard.edu/x/2022/labs/2/], sum of points and then compare two players' points.
+* [Scrabble](https://cs50.harvard.edu/x/2022/labs/2/), sum of points and then compare two players' points.
