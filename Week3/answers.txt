@@ -1,0 +1,11 @@
+sort1 uses: BubbleSort
+
+How do you know?: It takes most time in random10000.txt
+
+sort2 uses: mergeSort
+
+How do you know?: time varies little in sorting three txts' content.
+
+sort3 uses: Selection Sort
+
+How do you know?: it takes most time to sort in sorted10000.txt
