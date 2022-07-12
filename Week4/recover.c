@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     int flag = 0;
     FILE *jpg = NULL;
     char str[8];
-    while (fread(buffer, 512, 1, file)) {
+    while (fread(buffer, sizeof(BYTE), 512, file)) {
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0) {
             // find a jpg
             flag = 1;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         if (flag) {
 
             // 是从文件最后写的吗
-            fwrite(buffer, 512, 1, jpg);
+            fwrite(buffer, sizeof(BYTE), 512, jpg);
         }
     }
     fclose(jpg);
