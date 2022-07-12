@@ -22,7 +22,7 @@
 
 ```C
 for (int i = 0; i < height; i++) {
-    for (int j = 0; j < (width + 1) / 2; j++) {
+    for (int j = 0; j < width / 2; j++) {
         RGBTRIPLE tmp = image[i][width - 1 - j];
         image[i][width - 1 - j] = image[i][j];
         image[i][j] = tmp;
@@ -31,6 +31,22 @@ for (int i = 0; i < height; i++) {
 ```
 
 ### 结构体可以直接赋值，参考上述代码
+
+### 传入二维数组
+
+```C
+void func(int height, int width, int array[height][width]);
+```
+
+`height` 和 `width` 需要提前声明，否则函数不知道 `height` 和 `width` 是什么
+
+传入二维数组可以省略 `height`
+
+### edge函数
+
+记得要**封顶255**，用条件判别式即可
+
+### 函数名不要和变量名一样哦，否则调用时可能会出现问题
 
 
 
