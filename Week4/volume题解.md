@@ -1,0 +1,3 @@
+atof 把str转成double类型
+
+fread和fwrite中注意取地址符&buffer
