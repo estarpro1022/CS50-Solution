@@ -87,6 +87,14 @@ for title in sorted(titles, key=lambda title: titles[title], reverse=True):
 - `UPDATE`
 - `DELETE`, `DROP`
 
+<img src="https://img2022.cnblogs.com/blog/2735167/202208/2735167-20220801234752366-1279356520.png" style="zoom:67%;" />
+
+<img src="https://img2022.cnblogs.com/blog/2735167/202208/2735167-20220801234855906-1288043607.png" style="zoom:67%;" />
+
+<img src="https://img2022.cnblogs.com/blog/2735167/202208/2735167-20220801234939312-1896767795.png" style="zoom:67%;" />
+
+<img src="https://img2022.cnblogs.com/blog/2735167/202208/2735167-20220801235010039-548051872.png" style="zoom: 67%;" />
+
 
 
 #### SQLite 支持SQL的program
@@ -130,7 +138,7 @@ sqlite> SELECT title FROM favorites;
 - `AVG` `COUNT` `DISTINCT` `LOWER` `MAX` `MIN` `UPPER`
 - `WHERE` `LIKE` `ORDER BY` `LIMIT` `GROUP BY`
 
-`WHERE` 中对于numeric的数据，可以使用`>` `WHERE year > 2008`，不止`=`
+`WHERE` 中对于numeric的数据，可以使用`>`，如 `WHERE year > 2008`，不止`=`
 
 ```sql
 sqlite> SELECT DISTINCT(UPPER(title)) FROM shows;
@@ -370,6 +378,8 @@ CREATE TABLE people (
 
 **`PRIMARY KEY`**，用来标识每一行，在插入的时候不需要插入id
 
+* 混合primary key，不用单纯的数字，而是`A1` `A2` `B1` `B2`
+
 **`FOREIGN KEY`**，用来refer其他表中的某列
 
 
@@ -403,7 +413,7 @@ sqlite> SELECT * FROM shows WHERE title = "The Office" AND year = "2005";
 Run Time: real 0.000 user 0.000104 sys 0.000124
 ```
 
-通过创建下标的方式，极大加快了运行时间，但也会消耗更多的内存(**memory**)
+通过创建下标的方式，极大加快了运行时间，但也会消耗更多的内存(**memory**)，并且创建下标也需要时间
 
 
 
@@ -421,7 +431,7 @@ SELECT title FROM shows WHERE id IN (SELECT show_id FROM stars WHERE person_id I
 
 ==注意==：是基于related column才行，注意pset movie中的第7题
 
-**要加上id相同这个限定条件**
+**要加上id相同这个限定条件**，然后两个表中的列就通用了，只不过有可能要加 `.` 来取相应的列
 
 下面的例子中将 `people` 和 `stars`的部分表 和 `shows` 的部分表暂时合并，然后选符合 `name = "Steve Carell"` 的行
 
