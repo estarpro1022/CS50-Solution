@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breaking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+    <link href="break.css" rel="stylesheet">
+</head>
+<body>
+<header class="headerFont">
+    <span id="span">Breaking!</span>
+    <script>
+        let flag = 0;
+        let header = document.querySelector('.headerFont');
+        let span = document.querySelector('#span');
+        let change = null;
+        span.addEventListener('mouseup', function () {
+            if (flag === 0) {
+                flag = 1;
+                header.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2020/10/10/21/54/performers-5644247__480.jpg')";
+                header.style.paddingBottom = "10rem";
+                header.style.paddingTop = "8rem";
+                header.style.opacity = "0";
+                span.innerHTML = "Welcome to my page!<br>Wish you have a better understanding of breaking!";
+                span.style.textDecoration = "initial";
+                span.style.cursor = "pointer";
+                change = setInterval(changeOpacity, 10);
+            } else {
+                flag = 0;
+                header.style.padding = "2rem";
+                header.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704__340.jpg')";
+                header.style.opacity = "0";
+                span.style.textDecoration = null;
+                span.innerHTML = "Breaking!";
+                change = setInterval(changeOpacity, 10);
+            }
+
+            function changeOpacity() {
+                header.style.opacity = parseFloat(header.style.opacity) + 0.005 + "";
+                if (parseFloat(header.style.opacity) >= 1) {
+                    clearInterval(change);
+                }
+            }
+        })
+    </script>
+</header>
+
+<div style="float:left" class="hong">
+    <img src="hong10.jpg" width="400" height=auto alt="hong 10">
+</div>
+
+
+<div class="cropper" style="float:right">
+    <img src="toprock.webp" width="400" height='auto' alt="toprock">
+</div>
+
+<script>
+    let hong = document.querySelector('.hong');
+    hong.style.opacity = 1;
+    setInterval(function () {
+        hong.style.opacity = parseFloat(hong.style.opacity) - 0.005;
+        if (hong.style.opacity <= 0) {
+            // hong.style.opacity = 0;
+            let addOpacity = setInterval(function () {
+                /* Here should change 0.005 to 0.0005 */
+                hong.style.opacity = parseFloat(hong.style.opacity) + 0.0005;
+                if (hong.style.opacity >= 1) {
+                    clearInterval(addOpacity);
+                }
+            }, 10)
+        }
+    }, 10)
+
+    let toprock = document.querySelector('.cropper');
+    toprock.style.opacity = 1;
+    setInterval(function () {
+        toprock.style.opacity = parseFloat(toprock.style.opacity) - 0.005;
+        if (toprock.style.opacity <= 0) {
+            // hong.style.opacity = 0;
+            let addOpacity = setInterval(function () {
+                /* Here should change 0.005 to 0.0005 */
+                toprock.style.opacity = parseFloat(toprock.style.opacity) + 0.0005;
+                if (toprock.style.opacity >= 1) {
+                    clearInterval(addOpacity);
+                }
+            }, 10)
+        }
+    }, 10)
+
+</script>
+<p></p>
+<div style="margin-left:27%;margin-right:27%;">
+    <h2>Breaking History</h2>
+    <p></p>
+    <p>Old-style breakng was popular until the late 1970s when the Freak took over. This style was based on the debut
+        album "Freak Out!" by the band the Mothers of Invention. In 1979 and 1980, a new breaker crew was formed called
+        the Rock Steady Crew. This crew introduced acrobatic moves that had never been practiced before, such as
+        headspins, hand glides, and backspin. Basically all the moves we know and love today.</p>
+    <p>Breaking really started to take off in 1980, when it was adopted by popular artists like Michael Jackson, who
+        made the moonwalk a worldwide sensation. As a result of its growing popularity, record producers signed artists
+        who could break and who also presented a wholesome image that could appeal to broader audiences. This style
+        influenced many modern forms of dance, and you'll see it today in music videos as well as at live concerts.
+        You'll even see it performed by famous artists like Britney Spears.</p>
+    <hr>
+
+    <h2>Breaking Game: RED BULL BC ONE</h2>
+    <p></p>
+    <h4>HomePage:
+        <a href="https://www.redbull.com/sg-en/tags/breaking">Breaking</a>
+    </h4>
+    <p></p>
+    <p>Red Bull BC One is an annual international B-Boy competition organized by the energy drink company Red Bull. It
+        is an individual B-Boy competition, notable for being the only one of the major international breaking
+        championships to not include a crew event. The main event is a knockout tournament featuring sixteen B-Boys and
+        B-Girls, chosen for exceptional skills in the dance and good character, competing in one-on-one battles decided
+        by a panel of five judges. Regional Finals are held for North America, Eastern Europe, Western Europe, Latin
+        America, Asia Pacific, and Middle East and Africa. The winners of each region go on and participate in the World
+        Finals. The inaugural BC One was held in Biel, Switzerland in 2004.</p>
+    <img src="https://pbs.twimg.com/profile_banners/63500016/1648031941/1500x500"
+         width="100%" height="auto" alt="red bull">
+    <hr>
+    <p></p>
+
+    <h2>Famous All Stars</h2>
+    <table class="table table-success table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Nationality</th>
+            <th scope="col">Achievements</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">Hong 10</th>
+            <td>Korea</td>
+            <td>Champion of RED BULL BC ONE 2006, 2013</td>
+        </tr>
+
+        <tr>
+            <th scope="row">Taisuke</th>
+            <td>Japan</td>
+            <td>runner-up at the 2008 and 2014 Red Bull BC One World</td>
+        </tr>
+
+        <tr>
+            <th scope="row">Lilou</th>
+            <td>France</td>
+            <td>Champion of RED BULL BC ONE 2005</td>
+        </tr>
+        </tbody>
+
+    </table>
+    <p></p>
+
+    <h2>Enjoy a Battle Video</h2>
+    <p></p>
+    <video controls loop width="800">
+        <source src="hong10.mp4" type="video/mp4">
+    </video>
+
+    <p></p>
+    <hr>
+    <br>
+
+    <form>
+        <label for="favorite" class="form-label" style="font-size: 20px">Enter your favorite star</label>
+        <br>
+        <input autocomplete="off" id="favorite" type="text" class="form-control" placeholder="e.g. Hong 10">
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <!--        <button type="submit" class="btn btn-primary"> Submit</button>-->
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            alert("Your favorite breaking dancer is " + document.querySelector('#favorite').value);
+        })
+        // document.querySelector('#favorite').setAttribute('size', document.querySelector('#submit').getAttribute('placeholder').length);
+    </script>
+</div>
+
+<div class="footer">
+    <ul class="ul">
+        <li style="margin-left: 15rem">Creator: Kartone</li>
+        <li>Copyright &#169 Kartone. All rights reserved.</li>
+        <li>Contact me: kartonebboy@gmail.com</li>
+    </ul>
+</div>
+</body>
+</html>

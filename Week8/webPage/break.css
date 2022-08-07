@@ -1,0 +1,49 @@
+.headerFont {
+    text-align: center;
+    padding: 2rem;
+    color: #d7cccc;
+    font-size: 40px;
+    background-image: url("https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704__340.jpg");
+    background-size: cover;
+}
+
+.headerFont span:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.cropper {
+    width: 400px;
+    height: 574px;
+    overflow: hidden;
+}
+
+.cropper img{
+    width: 400px;
+    height: 600px;
+    margin: -26px 0 0 0;
+}
+.footer {
+    font-size: 20px;
+    background-color: #3a3af1;
+    color:white;
+    margin-top: 3rem;
+    padding: 3rem 0 3rem;
+}
+.ul li{
+    display: inline;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+input[type=text] {
+    padding-left:10px;
+    margin-bottom: 0.3rem;
+}
+
+input[type=submit] {
+    color: white;
+    /* this blue color is so beautiful */
+    background-color: #0d6efd;
+}
