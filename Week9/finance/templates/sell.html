@@ -6,13 +6,14 @@ sell
 
 {% block main %}
     <form action="/sell" method="post">
-        <select name="symbol">
+        <select name="symbol" class="ms-1 mb-3">
             <option value="" disabled selected>Symbol</option>
             {% for symbol in symbols %}
                 <option value="{{ symbol['symbol'] }}">{{ symbol["symbol"] }}</option>
             {% endfor %}
         </select>
-        <input autocomplete="off" class="form-control" name="shares" placeholder="Shares" type="text">
-        <input class="btn btn-primary" type="submit" value="Sell">
+        <input autocomplete="off" class="form-control mx-auto w-auto mb-3" name="shares" placeholder="Shares" type="text">
+        <!-- <input class="btn btn-primary" type="submit" value="Sell"> -->
+        <button class="btn btn-primary" type="submit">Sell</button>
     </form>
 {% endblock %}

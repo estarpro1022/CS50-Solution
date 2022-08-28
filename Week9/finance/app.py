@@ -180,7 +180,7 @@ def quote():
             return apology("symbol doesn't exist")
 
         look_up = lookup(symbol)
-        return render_template("quoted.html", name=look_up["name"], price=look_up["price"], symbol=look_up["symbol"])
+        return render_template("quoted.html", name=look_up["name"], price=usd(look_up["price"]), symbol=look_up["symbol"])
     else:
         return render_template("quote.html")
 
@@ -193,8 +193,9 @@ def register():
         usernames = db.execute("SELECT username FROM users")
         if not username:
             return apology("Username is blank")
-        if username in usernames:
-            return apology("Username already exists")
+        for user in usernames:
+            if username == user["username"]:
+                return apology("Username already exists")
 
         password = request.form.get("password")
         confirmation = request.form.get("confirmation")
