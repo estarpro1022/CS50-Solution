@@ -83,19 +83,20 @@
 
 - Now, we’ll need to create a`templates/`directory, and create an `index.html` file with some content inside it:
 
-  ```
+```
 <!DOCTYPE html>
-    
 <html lang="en">
+
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
           <title>hello</title>
     </head>
-      <body>
-        hello, world
-      </body>
+​      <body>
+​        hello, world
+​      </body>
 </html>
-  ```
+
+```
 
 - Now, typing `flask run` will return that HTML file when we visit our server’s URL:  `flask run`
 
@@ -106,12 +107,12 @@
   
 - We can change the URL by adding `/?name=David`, but our page stays the same. We’ll need to change our code in `app.py`:
 
-  ```
+```
   from flask import Flask, render_template, request
   
   app = Flask(__name__)
-  
-  
+
+
   @app.route("/")
   def index():
       name = request.args.get("name")
@@ -124,16 +125,16 @@
 
   ```
   <!DOCTYPE html>
-  
   <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
           <title>hello</title>
       </head>
-      <body>
-          hello, {{ name }}
-      </body>
+​      <body>
+​          hello, {{ name }}
+​      </body>
   </html>
+
   ```
   
 - Now, if we visit our URL with our input, we’ll see that the page’s content now includes it.
@@ -148,19 +149,19 @@
 
   ```
   <!DOCTYPE html>
-  
   <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
           <title>hello</title>
       </head>
-      <body>
+​      <body>
           <form action="/greet" method="get">
               <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
               <input type="submit">
           </form>
-      </body>
+​      </body>
   </html>
+
   ```
   
   - We’ll send the form to the `/greet` route, and have an input for the `name` parameter as well as a submit button.
@@ -173,8 +174,8 @@
   @app.route("/")
   def index():
       return render_template("index.html")
-  
-  
+
+
   @app.route("/greet")
   def greet():
       name = request.args.get("name")
@@ -201,7 +202,7 @@
 
   ```
 <!DOCTYPE html>
-  
+
 <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -238,7 +239,7 @@
 
   ```
   <!DOCTYPE html>
-  
+
   <html lang="en">
       <head>
           <title>hello</title>
@@ -255,14 +256,14 @@
 
   ```
   {% extends "layout.html" %}
-  
+
   {% block body %}
-  
+
       <form action="/greet" method="post">
           <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
           <input type="submit">
       </form>
-  
+
   {% endblock %}
   ```
   
@@ -272,11 +273,11 @@
 
   ```
 {% extends "layout.html" %}
-  
+
 {% block body %}
-  
+
       hello, {{ name }}
-  
+
 {% endblock %}
   ```
 
@@ -286,21 +287,23 @@
 
   ```
 <!DOCTYPE html>
-  
+
   <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
           <title>hello</title>
       </head>
       <body>
-  
-  
+
+
       <form action="/greet" method="get">
           <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
           <input type="submit">
       </form>
+
   
-  
+
+
       </body>
   </html>
   ```
@@ -356,7 +359,7 @@
 
   ```
   <!DOCTYPE html>
-  
+
   <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -372,10 +375,10 @@
 
   ```
   from flask import Flask, render_template, request
-  
+
   app = Flask(__name__)
-  
-  
+
+
   @app.route("/")
   def index():
       return render_template("index.html")
@@ -385,11 +388,11 @@
 
   ```
 {% extends "layout.html" %}
-  
+
 {% block body %}
         
       TODO
-  
+
 {% endblock %}
   ```
 
@@ -399,7 +402,7 @@
 
   ```
   {% extends "layout.html" %}
-  
+
   {% block body %}
       <h1>Register</h1>
       <form action="/register" method="post">
@@ -422,11 +425,11 @@
   ```
   @app.route("/register", methods=["POST"])
   def register():
-  
+
     # Validate submission
     if not request.form.get("name") or request.form.get("sport") not in ["Basketball", "Soccer", "Ultimate Frisbee"]:
         return render_template("failure.html")
-  
+      
     # Confirm registration
     return render_template("success.html")
   ```
@@ -437,7 +440,7 @@
 
   ```
   {% extends "layout.html" %}
-  
+
 {% block body %}
       You are not registered!
 {% endblock %}
@@ -447,7 +450,7 @@
 
   ```
 {% extends "layout.html" %}
-  
+
 {% block body %}
       You are registered!
   {% endblock %}
@@ -465,7 +468,7 @@
 
   ```
 {% extends "layout.html" %}
-  
+
 {% block body %}
       <h1>Register</h1>
       <form action="/register" method="post">
@@ -487,7 +490,7 @@
 
   ```
   <!DOCTYPE html>
-  
+
   <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -506,20 +509,20 @@
 
   ```
 from flask import Flask, render_template, request
-  
+
   app = Flask(__name__)
-  
+
   SPORTS = [
       "Basketball"
       "Soccer",
       "Ultimate Frisbee"
   ]
-  
-  
+
+
   @app.route("/")
   def index():
       return render_template("index.html", sports=SPORTS)
-  
+
   ...
   ```
   
@@ -546,10 +549,10 @@ from flask import Flask, render_template, request
   ...
   @app.route("/register", methods=["POST"])
   def register():
-  
+
       if not request.form.get("name") or request.form.get("sport") not in SPORTS:
           return render_template("failure.html")
-  
+      
       return render_template("success.html")
   ```
   
@@ -559,18 +562,18 @@ from flask import Flask, render_template, request
 
   ```
   {% extends "layout.html" %}
-  
+
   {% block body %}
       <h1>Register</h1>
-  
+
       <form action="/register" method="post">
-  
+      
           <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
           {% for sport in sports %}
               <input name="sport" type="checkbox" value="{{ sport }}"> {{ sport }}
           {% endfor %}
           <input type="submit" value="Register">
-  
+      
       </form>
   {% endblock %}
   ```
@@ -588,47 +591,49 @@ from flask import Flask, render_template, request
 
   ```
   # Implements a registration form, storing registrants in a dictionary, with error messages
-  
+
   from flask import Flask, redirect, render_template, request
-  
+
   app = Flask(__name__)
-  
+
   REGISTRANTS = {}
-  
+
   SPORTS = [
       "Basketball",
       "Soccer",
       "Ultimate Frisbee"
   ]
-  
-  
+
+
   @app.route("/")
   def index():
       return render_template("index.html", sports=SPORTS)
-  
-  
+
+
   @app.route("/register", methods=["POST"])
   def register():
-  
+
       # Validate name
       name = request.form.get("name")
       if not name:
           return render_template("error.html", message="Missing name")
-  
+      
       # Validate sport
       sport = request.form.get("sport")
       if not sport:
           return render_template("error.html", message="Missing sport")
       if sport not in SPORTS:
           return render_template("error.html", message="Invalid sport")
-  
+      
       # Remember registrant
       REGISTRANTS[name] = sport
-  
+      
       # Confirm registration
       return redirect("/registrants")
+
   
-  
+
+
   @app.route("/registrants")
   def registrants():
       return render_template("registrants.html", registrants=REGISTRANTS)
@@ -640,7 +645,7 @@ from flask import Flask, render_template, request
 
   ```
   {% extends "layout.html" %}
-  
+
   {% block body %}
       <h1>Error</h1>
       <p>{{ message }}</p>
@@ -652,7 +657,7 @@ from flask import Flask, render_template, request
 
   ```
     {% extends "layout.html" %}
-  
+      
     {% block body %}
         <h1>Registrants</h1>
         <table>
@@ -680,38 +685,38 @@ from flask import Flask, render_template, request
 
   ```
   # Implements a registration form, storing registrants in a SQLite database, with support for deregistration
-  
+
   from cs50 import SQL
   from flask import Flask, redirect, render_template, request
-  
+
   app = Flask(__name__)
-  
+
   db = SQL("sqlite:///froshims.db")
-  
+
   SPORTS = [
       "Basketball",
       "Soccer",
       "Ultimate Frisbee"
   ]
-  
-  
+
+
   @app.route("/")
   def index():
       return render_template("index.html", sports=SPORTS)
-  
+
   ...
   ```
   
   - In our terminal, we can run  `sqlite3 froshims.db` to open the database, and use the `.schema` command to see the table with columns of `id`, `name`, and `sport` , which was created in advance:
   
-    ```
+  ```
     src9/froshims4/ $ sqlite3 froshims.db
     SQLite version 3.36.0 2021-06-18 18:36:39
     Enter ".help" for usage hints.
     sqlite> .schema
     CREATE TABLE registrants (id INTEGER, name TEXT NOT NULL, sport TEXT NOT NULL, PRIMARY KEY(id));
     ```
-  
+
 - Now, in our `/register` route, we’re using SQL to store our data:
 
   ```
@@ -883,9 +888,9 @@ from flask import Flask, render_template, request
 - It turns out that servers can send another header in a response, called `Set-Cookie` :
 
   ```
-HTTP/1.1 200 OK
+  HTTP/1.1 200 OK
   Content-Type: text/html
-Set-Cookie: session=value
+  Set-Cookie: session=value
   ...
   ```
   
@@ -920,7 +925,7 @@ Set-Cookie: session=value
   - We’ll configure the session library to use the server’s filesystem, and use `session` like a dictionary to store a user’s name. It turns out that Flask will use HTTP cookies for us, to maintain this `session` variable for each user visiting our web server. Every user will be logged in with a different session, and we can see them in the `flask_session` directory:
   
     ```
-  src9/login/flask_session/ $ ls
+    src9/login/flask_session/ $ ls
     2029240f6d1128be89ddc32729463129
   ```
   
@@ -955,7 +960,7 @@ Set-Cookie: session=value
 - For our `/login` route, we’ll store `name` in `session` to the form’s value sent via POST, and then redirect to the default route. If we visited the route via GET, we’ll render the login form at `login.html` :
 
   ```
-@app.route("/login", methods=["GET", "POST"])
+  @app.route("/login", methods=["GET", "POST"])
     def login():
       if request.method == "POST":
             session["name"] = request.form.get("name")
@@ -965,16 +970,16 @@ Set-Cookie: session=value
   
 - Then, in our `login.html`, we can have a form that can submit to itself:
   
-  ```
+```
     {% extends "layout.html" %}
-  
+      
     {% block body %}
     
         <form action="/login" method="post">
           <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
             <input type="submit" value="Log In">
       </form>
-    
+
   {% endblock %}
     ```
 
@@ -1088,19 +1093,19 @@ Set-Cookie: session=value
 
   ```
 # Searches for shows
-  
+
 from cs50 import SQL
   from flask import Flask, render_template, request
-  
+
   app = Flask(__name__)
 
   db = SQL("sqlite:///shows.db")
 
-  
+
 @app.route("/")
   def index():
       return render_template("index.html")
-  
+
 
   @app.route("/search")
 def search():
@@ -1114,7 +1119,7 @@ def search():
   
   - Finally, the `search.html` template will use a loop to print the list of show titles:
   
-    ```
+  ```
     {% extends "layout.html" %}
     
     {% block body %}
@@ -1124,7 +1129,7 @@ def search():
                 <li>{{ show["title"] }}</li>
             {% endfor %}
         </ul>
-    
+
   {% endblock %}
     ```
 
@@ -1134,7 +1139,7 @@ def search():
 
   ```
 <!DOCTYPE html>
-  
+
 <html lang="en">
       <head>
           <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -1143,9 +1148,9 @@ def search():
       <body>
 
           <input autocomplete="off" autofocus placeholder="Query" type="search">
-  
+      
           <ul></ul>
-  
+      
           <script>
         
               let input = document.querySelector('input');
@@ -1154,9 +1159,9 @@ def search():
                   let shows = await response.text();
                   document.querySelector('ul').innerHTML = shows;
               });
-  
+      
           </script>
-  
+      
       </body>
   </html>
   ```
@@ -1169,8 +1174,10 @@ def search():
   
   - We can even visit `/search?q=c` manually to see the same response in our browser:
   
-    ```
-  <li>Catweazle</li>
+  ```
+
+
+ <li>Catweazle</li>
     
   <li>Ace of Wands</li>
     
@@ -1181,6 +1188,8 @@ def search():
   <li>All My Children</li>
         
   ...
+
+    ```
     ```
 
 - It turns out that we can use another format for our data, JSON, JavaScript Object Notation in `shows2`, instead of returning a long list of `<li>` elements that are already created. Now, when we run this version and visit the same URL, we see:

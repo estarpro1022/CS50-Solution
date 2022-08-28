@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+history
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+            <th scope="col">NUmber of Shares</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in history %}
+            <tr>
+                <th>{{ item["symbol"] }}</th>
+                <th>{{ item["type"] }}</th>
+                <th>{{ item["price"] }}</th>
+                <th>{{ item["shares"] }}</th>
+                <th>{{ item["time"] }}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
