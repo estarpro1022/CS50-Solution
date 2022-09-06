@@ -48,15 +48,16 @@
             <thead>
             <tr>
                 <div>
-                    <th scope="col">ID</th>
+                    <th scope="col">Number</th>
                     <th scope="col">Name</th>
                 </div>
             </tr>
             </thead>
-            {% set id = 1 %}
+            {% set iD = 0 %}
             {% for row in rows %}
                 <tr>
-                    <td>{{ id }}</td>
+{#              loop.index + 1  #}
+                    <td>{{ loop.index }}</td>
                     <td>{{ row[0] }}</td>
                 </tr>
             {% endfor %}
