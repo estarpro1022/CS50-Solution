@@ -22,12 +22,30 @@
             </form>
         </li>
     </ul>
-    <div style="width: 12rem; margin-left: 70%">
+    <div style="margin-left: 70%">
         <form action='/login' method="post">
-            <input autocomplete="off" class="form-control" name="username" placeholder="Username" style="margin-bottom: 1rem"
+            <input autofocus autocomplete="off" class="form-control" name="username" placeholder="Username" style="width: 12rem; margin-bottom: 1rem"
                    type="text">
-            <input autocomplete="off" class="form-control" name="password" placeholder="Password" style="margin-bottom: 1rem" type="text">
+            <ul class="header">
+                <li>
+                    <input autocomplete="off" class="form-control" id="password" name="password" placeholder="Password" style="width: 12rem; margin-left: -2rem; margin-bottom: 1rem" type="password">
+                </li>
+                <li>
+                    <input style="margin-left: 1rem;" type="checkbox" onclick="showpassword2()">
+                    <span style="color: white">Show Password</span>
+                </li>
+            </ul>
             <input class="btn btn-primary" type="submit" value="Login">
         </form>
+        <script>
+            function showpassword2() {
+                let password = document.querySelector('#password')
+                if (password.type === "password") {
+                    password.type = "text";
+                } else {
+                    password.type = "password";
+                }
+            }
+        </script>
     </div>
 {% endblock %}

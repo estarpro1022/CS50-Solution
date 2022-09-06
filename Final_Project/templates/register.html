@@ -22,21 +22,56 @@
             </form>
         </li>
     </ul>
-    <div style="width: 12rem; margin-left: 70%">
+    <div style="margin-left: 70%">
         <form action="/register" method="post">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" style="margin-bottom: 1rem;" type="text">
-            <input autocomplete="off" class="form-control" name="password" placeholder="Password" style="margin-bottom: 1rem;" type="text">
-            <input autocomplete="off" class="form-control" name="confirmation" placeholder="Confirmation" style="margin-bottom: 1rem;" type="text">
-            <input class="btn btn-primary" type="submit" value="Register">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username"
+                   style="width: 12rem; margin-bottom: 1rem;" type="text">
+            <ul class="header">
+                <li>
+                    <input autocomplete="off" id="password" class="form-control" name="password" placeholder="Password"
+                           style="width: 12rem; margin-left: -2rem; margin-right: 1rem;" type="password">
+                </li>
+                <li>
+                    <input type="checkbox" onclick="showpassword()">
+                    <span style="color: white">Show Password</span>
+                </li>
+            </ul>
+
+            <ul class="header">
+                <li>
+                    <input autofocus autocomplete="off" class="form-control" id="confirmation" name="confirmation"
+                           placeholder="Confirmation" style="width: 12rem; margin-left: -2rem;" type="password">
+                </li>
+                <li>
+                    <input style="margin-left: 1rem" type="checkbox" onclick="showpassword1()">
+                    <span style="color: white">Show Confirmation</span>
+                </li>
+            </ul>
+            <div style="margin-top: -1rem">
+                <span style="background-color: red; color: #2d0606">
+                    {{ msg }}
+                </span>
+            </div>
+            <input class="btn btn-primary" style="margin-top: 1rem" type="submit" value="Register">
         </form>
+        <script>
+            function showpassword() {
+                let password = document.querySelector('#password');
+                if (password.type === "password") {
+                    password.type = "text";
+                } else {
+                    password.type = "password";
+                }
+            }
+
+            function showpassword1() {
+                let confirmation = document.querySelector('#confirmation')
+                if (confirmation.type === "password") {
+                    confirmation.type = "text";
+                } else {
+                    confirmation.type = "password";
+                }
+            }
+        </script>
     </div>
-    {% if not username %}
-        <p style="color:red">No username</p>
-    {% endif %}
-    {% if not password %}
-        <p style="color: red">No password</p>
-    {% endif %}
-    {% if not confirmation %}
-        <p style="color: red">Passwords don't match</p>
-    {% endif %}
 {% endblock %}

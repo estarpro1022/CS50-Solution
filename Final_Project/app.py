@@ -51,17 +51,17 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
-        return render_template('register.html', username=True, password=True, confirmation=True)
+        return render_template('register.html', msg='')
     username = request.form.get('username')
     password = request.form.get('password')
     confirmation = request.form.get('confirmation')
 
     if not username:
-        return render_template("register.html", username=None, password=True, confirmation=True)
+        return render_template("register.html", msg="No username")
     if not password:
-        return render_template("register.html", username=True, password=False, confirmation=True)
+        return render_template("register.html", msg="No password")
     if confirmation != password:
-        return render_template("register.html", username=True, password=True, confirmation=False)
+        return render_template("register.html", msg="Passwords don't match")
 
     with sqlite3.connect('user.db') as con:
         cur = con.cursor()
