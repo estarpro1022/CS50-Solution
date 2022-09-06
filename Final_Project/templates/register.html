@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+    <ul class="header" style="margin-bottom: 10rem">
+        <li>
+            <form action="/">
+                <input class="btn btn-primary" type="submit" value="Home">
+            </form>
+        </li>
+        <li style="float: right; margin-right: 3rem">
+            <form action="/register">
+                <input class="btn btn-primary" type="submit" value="Register">
+            </form>
+        </li>
+        <li style="float: right; margin-right: 3rem">
+            <form action="/login">
+                <input class="btn btn-primary" type="submit" value="Login">
+            </form>
+        </li>
+    </ul>
+    <div style="width: 12rem; margin-left: 70%">
+        <form action="/register" method="post">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" style="margin-bottom: 1rem;" type="text">
+            <input autocomplete="off" class="form-control" name="password" placeholder="Password" style="margin-bottom: 1rem;" type="text">
+            <input autocomplete="off" class="form-control" name="confirmation" placeholder="Confirmation" style="margin-bottom: 1rem;" type="text">
+            <input class="btn btn-primary" type="submit" value="Register">
+        </form>
+    </div>
+    {% if not username %}
+        <p style="color:red">No username</p>
+    {% endif %}
+    {% if not password %}
+        <p style="color: red">No password</p>
+    {% endif %}
+    {% if not confirmation %}
+        <p style="color: red">Passwords don't match</p>
+    {% endif %}
+{% endblock %}

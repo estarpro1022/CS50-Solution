@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <ul class="header">
+        <li style="margin-right: 1rem">
+            <form action="/">
+                <input class="btn btn-primary" type="submit" value="Home">
+            </form>
+        </li>
+        <li style="margin-right: 1rem">
+            <form action="/search">
+                <input class="btn btn-primary" type="submit" value="Search">
+            </form>
+        </li>
+        <li style="margin-right: 1rem">
+            <form action="/buy">
+                <input class="btn btn-primary" type="submit" value="Buy">
+            </form>
+        </li>
+        <li>
+            <form action="/favorite">
+                <input class="btn btn-success" type="submit" value="Shopping Cart">
+            </form>
+        </li>
+        <li style="margin-right: 3rem; float: right">
+            <form action="/logout">
+                <input class="btn btn-primary" type="submit" value="Logout">
+            </form>
+        </li>
+    </ul>
+    <form action="/search" method="post" style="text-align: center; margin-bottom: 1rem">
+        <input autocomplete="off" name="name" placeholder="Book" type="text">
+        <input class="btn btn-primary" type="submit" value="Search">
+    </form>
+    <div class="page_margin">
+        <table class="table table-bordered table-info table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Press</th>
+                <th scope="col">ISBN</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr>
+                    <th scope="row">{{ row[1] }}</th>
+                    <th scope="row">{{ row[2] }}</th>
+                    <th scope="row">{{ row[3] }}</th>
+                    <th scope="row">{{ row[4] }}</th>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

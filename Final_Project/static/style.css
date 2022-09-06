@@ -1,0 +1,21 @@
+/*html {*/
+/*   min-height: 100%;*/
+/*   background-image: url(/static/bookstores-in-singapore-main-image.jpg);*/
+/*   background-size: cover;*/
+/*   background-repeat: no-repeat;*/
+/*   background-position: center center;*/
+/*}*/
+html body {
+  background-image:  url("/static/bookstores-in-singapore-main-image.jpg");
+    background-size: cover;
+}
+
+.header li{
+    display: inline-block;
+/*    amazing inline-block not inline*/
+}
+
+.page_margin {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}

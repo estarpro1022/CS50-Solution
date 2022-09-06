@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block title %}
+Buy
+{% endblock %}
+
+{% block body %}
+    <ul class="header">
+        <li style="margin-right: 1rem">
+            <form action="/">
+                <input class="btn btn-primary" type="submit" value="Home">
+            </form>
+        </li>
+        <li style="margin-right: 1rem">
+            <form action="/search">
+                <input class="btn btn-primary" type="submit" value="Search">
+            </form>
+        </li>
+        <li style="margin-right: 1rem">
+            <form action="/buy">
+                <input class="btn btn-primary" type="submit" value="Buy">
+            </form>
+        </li>
+        <li>
+            <form action="/favorite">
+                <input class="btn btn-success" type="submit" value="Shopping Cart">
+            </form>
+        </li>
+        <li style="margin-right: 3rem; float: right">
+            <form action="/logout">
+                <input class="btn btn-primary" type="submit" value="Logout">
+            </form>
+        </li>
+    </ul>
+    <form action="/buy" method="post" style="text-align: center">
+        <input autocomplete="off" name="bookname" placeholder="Book" type="text">
+        <input autocomplete="off" name="number" placeholder="Number" type="number">
+        <input class="btn btn-primary" type="submit" value="Buy">
+    </form>
+{% endblock %}
