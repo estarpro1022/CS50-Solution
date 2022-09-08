@@ -128,7 +128,7 @@ def buy():
 @login_required
 def favorite():
     if request.method == 'GET':
-        rows = execute('SELECT bookname FROM favorites JOIN books ON favorites.book_id = books.id WHERE favorites.id = %d' % session.get('id'))
+        rows = execute('SELECT bookname, book_id FROM favorites JOIN books ON favorites.book_id = books.id WHERE favorites.id = %d' % session.get('id'))
         return render_template('favorite.html', rows=rows)
     bookname = request.form.get('bookname')
     books = execute('SELECT id, bookname FROM books')
@@ -155,6 +155,13 @@ def favorite():
     execute('INSERT INTO favorites (id, book_id) VALUES (%d, %d)' % (session.get('id'), book_id))
     return redirect('/favorite')
 
+
+@app.route('/remove', methods=['POST'])
+@login_required
+def remove():
+    book_id = int(request.form.get('book_id'))
+    execute('DELETE FROM favorites WHERE id = %d AND book_id = %d' % (session['id'], book_id))
+    return redirect(url_for('favorite'))
 
 if __name__ == '__main__':
     app.run()

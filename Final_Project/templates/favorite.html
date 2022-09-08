@@ -47,22 +47,24 @@
         <table class="table table-bordered table-striped table-success">
             <thead>
             <tr>
-                <div>
-                    <th scope="col">Number</th>
-                    <th scope="col">Name</th>
-                </div>
+                <th scope="col">Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Operation</th>
             </tr>
             </thead>
-            {% set iD = 0 %}
+            <tbody>
             {% for row in rows %}
                 <tr>
-{#              loop.index + 1  #}
                     <td>{{ loop.index }}</td>
                     <td>{{ row[0] }}</td>
+                    <td>
+                        <form action="/remove" method="post">
+                            <input type="hidden" name="book_id" value="{{ row[1] }}">
+                            <input class="btn btn-primary" type="submit" value="Remove">
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
-            <tbody>
-
             </tbody>
         </table>
     </div>
